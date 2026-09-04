@@ -9,13 +9,20 @@ SHRANJEVALNA_MAPA = Path("C:/Users/emaom/OneDrive/Desktop/Seminarska naloga/SURO
 
 def prenesi_z_brskalnikom(skupno_strani: int = 1):
     SHRANJEVALNA_MAPA.mkdir(parents=True, exist_ok=True)
-
     with sync_playwright() as p:
-        browser = p.chromium.launch(channel="chrome", headless=True)
-        context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            locale="sl-SI",
+        browser = p.chromium.launch(
+            channel="chrome", 
+            headless=False, 
+            args=["--disable-blink-features=AutomationControlled"]
         )
+        context = browser.new_context()
+    # #with sync_playwright() as p:
+    #     browser = p.chromium.launch(channel="chrome", headless=True)
+    #     context = browser.new_context(
+    #         user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    #         locale="sl-SI",
+    #     )
+    
         page = context.new_page()
 
         for st_strani in range(1, skupno_strani + 1):
@@ -43,4 +50,6 @@ def prenesi_z_brskalnikom(skupno_strani: int = 1):
 
 
 if __name__ == "__main__":
-    prenesi_z_brskalnikom(skupno_strani=1)
+    prenesi_z_brskalnikom(skupno_strani=30)
+
+
