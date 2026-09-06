@@ -4,4 +4,4 @@ V analizi sem se poglobila v tri najbolj pomembne dejavnike, ki vplivajo na ceno
 1. Pridobivanje podatkov: (`pridobi.py`) poskrbi za prenos surovih podatkov v obliki HTML datotek.
 2. Izluščanje podatkov: (`izlusci.py`) prebere HTML datoteke, izlušči iskane podatke v obliki CSS daatoteke.
 3. Urejanje podatkov: (`uredi.py`) uredi in očisti podatke, da so pripravljeni za analizo.
-4. Analiza podatkov: (`analiza.ipynb`) končna analiza, grafična vizualizacija in izračuni so izvedeni v Jupyter Notebooku.
+4. Analiza podatkov: (`analiza.ipynb`) predstavlja končno analizo, grafično vizualizacijo in izračune so izvedeni v Jupyter Notebooku.
