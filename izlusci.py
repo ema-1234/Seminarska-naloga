@@ -3,12 +3,11 @@ import os
 import re
 from bs4 import BeautifulSoup
 
-DIRECTORY = "C:/Users/emaom/OneDrive/Desktop/Seminarska naloga/SUROVI_PODATKI"
+DIRECTORY = "SUROVI_PODATKI"
 CSV_FILENAME = "nepremicnine_ljubljana.csv"
 
 
 def read_file_to_string(directory, filename):
-    """Funkcija vrne celotno vsebino datoteke kot niz."""
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'r', encoding='utf-8') as file_in:
@@ -16,7 +15,6 @@ def read_file_to_string(directory, filename):
     return text
 
 def page_to_ads(page_content):
-    """Funkcija poišče posamezne oglase s pomočjo BeautifulSoup in atributa itemprop='description'."""
     soup = BeautifulSoup(page_content, 'html.parser')
 
     descriptions = soup.find_all(attrs={"itemprop": "description"})
@@ -89,7 +87,6 @@ def ads_from_file(filename, directory):
 
 
 def write_csv(fieldnames, rows, directory, filename):
-    """Zapiše vrednosti v CSV datoteko."""
     os.makedirs(directory, exist_ok=True)
     path = os.path.join(directory, filename)
     with open(path, 'w', encoding='utf-8', newline="") as csv_file:
@@ -100,7 +97,6 @@ def write_csv(fieldnames, rows, directory, filename):
 
 
 def write_ads_to_csv(ads, directory, filename):
-    """Preveri podatke in jih zapiše v CSV datoteko."""
     if not ads:
         print("Seznam oglasov je prazen, ničesar ni za zapisati v CSV.")
         return
